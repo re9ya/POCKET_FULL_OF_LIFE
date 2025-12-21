@@ -1,11 +1,18 @@
-    const titleText = "YOU\nNEVER KNOW\nWHAT SOMEONE MIGHT BE\nGOING THROUGH";
-    const titleElement = document.getElementById('typewriter');
-    const cursor = document.querySelector('.cursor');
-    const dotsElement = document.querySelector('.dots');
-    const playButton = document.getElementById('playButton');
-    let titleIndex = 0;
+const titleText = "''WHENEVER YOU FEEL LIKE CRITICIZING\nANY ONE...\nJUST REMEMBER\nTHAT ALL PEOPLE IN THIS WORLD\nHAVEN'T HAD THE ADVANTAGES THAT YOU'VE HAD''\n-F.S.FITZGERALD";
+const bigTitleText = "POCKET FULL\nOF\nLIFE";
+const titleElement = document.getElementById('typewriter');
+const bigTitleElement = document.getElementById('bigTitle');
+const cursor = document.querySelector('.cursor');
+const dotsElement = document.querySelector('.dots');
+const playButton = document.getElementById('playButton');
+let titleIndex = 0;
 
-    dotsElement.style.display = 'none';
+dotsElement.style.display = 'none';
+bigTitleElement.textContent = bigTitleText;
+
+setTimeout(() => {
+    bigTitleElement.classList.add('fade-in');
+}, 30000);
 
 function typewriter() {
     if (titleIndex < titleText.length){
@@ -18,11 +25,19 @@ function typewriter() {
         }
 
         titleIndex++;
-        setTimeout(typewriter, 350);
+        setTimeout(typewriter, 150);
     } else { 
-     
+
         dotsElement.style.display = 'inline';
         animateDots();
+
+        setTimeout(() => {
+            playButton.style.display = 'flex'; //makes it visible
+
+            setTimeout(() => {
+                playButton.classList.add('fade-in');
+            }, 50);
+        }, 8000);
     }
 }
 
@@ -32,26 +47,23 @@ function animateDots(){
     dotsElement.textContent = '.'.repeat(dotCount);
     setTimeout(animateDots, 500);
 }
+playButton.addEventListener('click', () => {
+    console.log("Loading...")
 
-typewriter();
+    playButton.classList.add('circle-active');
+
+    setTimeout(() => {
+        fadeToS2();
+    }, 300);
+})
 
 function fadeToS2(){
     const fadeOverlay = document.querySelector('.fade-to-S2');
     fadeOverlay.classList.add('active');
 
-    setTimeout(() => {
-        document.querySelector('.sceen1').style.display = 'none';
-        fadeOverlay.classList.remove('active');
-    }, 15000);
+setTimeout(() => {
+    window.location.href = 's2.html';
+    }, 2000);
 }
 
-setTimeout(fadeToS2, 15000);
-
-
-playButton.addEventListener('click', () => {
-    console.log("Loading")
-    dotsElement.style.display = 'inline';
-    animateDots();
-
-    window.location.replace("s2.html");
-});
+typewriter();
