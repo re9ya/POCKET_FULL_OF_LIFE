@@ -1,4 +1,4 @@
-const titleText = "''WHENEVER YOU FEEL LIKE CRITICIZING\nANY ONE...\nJUST REMEMBER\nTHAT ALL PEOPLE IN THIS WORLD\nHAVEN'T HAD THE ADVANTAGES THAT YOU'VE HAD''\n-F.S.FITZGERALD";
+const titleText = "''WHENEVER YOU FEEL LIKE CRITICIZING ANY ONE...\nJUST REMEMBER\nTHAT ALL PEOPLE IN THIS WORLD\nHAVEN'T HAD THE ADVANTAGES THAT YOU'VE HAD''\n-THE GREAT GATSBY";
 const bigTitleText = "POCKET FULL\nOF\nLIFE";
 const titleElement = document.getElementById('typewriter');
 const bigTitleElement = document.getElementById('bigTitle');
@@ -12,7 +12,7 @@ bigTitleElement.textContent = bigTitleText;
 
 setTimeout(() => {
     bigTitleElement.classList.add('fade-in');
-}, 30000);
+}, 26000);
 
 function typewriter() {
     if (titleIndex < titleText.length){
@@ -32,8 +32,6 @@ function typewriter() {
         animateDots();
 
         setTimeout(() => {
-            playButton.style.display = 'flex'; //makes it visible
-
             setTimeout(() => {
                 playButton.classList.add('fade-in');
             }, 50);
@@ -50,7 +48,7 @@ function animateDots(){
 playButton.addEventListener('click', () => {
     console.log("Loading...")
 
-    playButton.classList.add('circle-active');
+    playButton.style.transform = "scale(0.9)";
 
     setTimeout(() => {
         fadeToS2();

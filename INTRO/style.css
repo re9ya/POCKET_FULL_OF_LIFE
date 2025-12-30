@@ -1,30 +1,25 @@
-body {
-       font-family: Georgia, serif;
-       background-color: black;
-       margin: 0;
-       padding: 0;
-   }
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Gloria+Hallelujah&family=Reenie+Beanie&family=Shadows+Into+Light&display=swap');
 
-.bigTitle {
-    color: white;
-    text-decoration: underline;
-    font-size: xxx-large;
-    font-weight: bold;
-    position: absolute;
-    justify-content: center;
-    top: 60px;
-    opacity: 0;
-    transition: opacity 2s ease;
+body {
+    font-family: 'Shadows Into Light', cursive;
+    background-color: black;
+    margin: 0;
+    padding: 0;
 }
 
-.book {
-    width: 200px;
-    height: 200px;
-    top: 100px;
-    transition: opacity 10s ease;
+.bigTitle, .opening {
+    margin: 0;
+    padding: 0;
+}
+
+.bigTitle {
+    color:antiquewhite;
+    font-size: xxx-large;
+    font-weight: bold;
+    text-align: center;
+    margin: 80px;
     opacity: 0;
-    position: absolute;
-    z-index: 0;
+    transition: opacity 2s ease;
 }
 
 .bigTitle.fade-in {
@@ -32,18 +27,15 @@ body {
     pointer-events: all;
 }
 
-.book.fade-in {
-    opacity: 1;
-    pointer-events: all;
-}
-
 .opening {
-    color: white;
+
+    color:antiquewhite;
     font-size: x-large;
     font-weight: lighter;
-    position: absolute;
-    justify-content: center;
-    top: 250px;
+    text-align: center;
+    max-width: 80%;
+    line-height: 1.6;
+    margin-bottom: 20px;
 }
 
 .cursor {
@@ -71,15 +63,16 @@ body {
     /* Center properly for all screens */
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     min-height: 100vh;
-    padding: 20px;
-    position: relative; /*changes with page*/
+    padding: 10px;
+    background-color: black;
+    box-sizing: border-box;
 }
 
 .loading {
-    margin-top: 30px;
+    margin-top: 0px;
 }
 
 .fade-to-S2 {
@@ -100,46 +93,46 @@ body {
     pointer-events: all;
 }
 
-.circle {
-    width: 140px;
-    height: 140px;
-    border-radius: 50%;
-    background-color: white;
+.play-button-style {
+    width: 60px;
+    height: 60px;
+    background: transparent;
     border: none;
     cursor: pointer;
-    position: absolute;
-    bottom: 200px;
-    left: 50%;
+
+    margin-top: 20px;
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: transform 0.5s ease, opacity 2s ease; /*Press effect*/
-    margin-top: 10px;
+
+    margin-top: 100px;
     opacity: 0;
-    transform: translateX(-50%);
+    transition: transform 0.3s, opacity 8s ease;
+    pointer-events: none;
 }
 
-.circle.fade-in {
+.play-button-style.fade-in {
     opacity: 1; /*makes it visible*/
     pointer-events: all;
 }
 
-.circle:hover {
-    transform: translateX(-50%) scale(1.1);
+.play-image {
+    width: 300px;
+    height: auto;
+
+    flex-shrink: 0;
+
+    pointer-events: none;
+    transition: transform 0.3s ease;
+    display: block;
 }
 
-.circle-active {
-    transition: opacity 3s ease;
-    transform: translateX(-50%) scale(0.9); /*shrinks slightly when clicked*/
+.play-button-style:hover .play-image{
+    transform: scale(1.1);
 }
 
-.play-icon {
-    color: black;
-    width: 0;
-    height: 0;
-    border-top: 25px solid transparent;
-    border-bottom: 30px solid transparent;
-    border-left: 50px solid black;
-    border-radius: 10%;
-    margin-left: 10px;
+.play-button-style:active .play-image{
+    transform: scale(0.95);
+    transition: transform 0.3s;
 }
