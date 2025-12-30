@@ -98,9 +98,9 @@ body {
     pointer-events: all;
 }
 
-.play-button-style {
-    width: 60px;
-    height: 60px;
+.play-button-style { /*this is for the transition*/
+    width: 120px;
+    height: 120px;
     background: transparent;
     border: none;
     cursor: pointer;
@@ -121,7 +121,7 @@ body {
     pointer-events: all;
 }
 
-.play-image {
+.play-image { /*this is the png itself*/
     margin-top: 160px;
     width: 600px;
     height: auto;
@@ -135,9 +135,10 @@ body {
 
 .play-button-style:hover .play-image{
     transform: scale(1.1);
+    transition: transform 0.5s;
 }
 
 .play-button-style:active .play-image{
-    transform: scale(0.95);
+    transform: scale(0.935);
     transition: transform 0.3s;
 }

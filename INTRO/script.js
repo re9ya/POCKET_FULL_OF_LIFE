@@ -8,7 +8,7 @@ const playButton = document.getElementById('playButton');
 let titleIndex = 0;
 
 dotsElement.style.display = 'none';
-bigTitleElement.textContent = bigTitleText;
+bigTitleElement.textContent = bigTitleText; /*Fade in big title*/ */
 
 setTimeout(() => {
     bigTitleElement.classList.add('fade-in');
@@ -27,15 +27,12 @@ function typewriter() {
         titleIndex++;
         setTimeout(typewriter, 150);
     } else { 
-
         dotsElement.style.display = 'inline';
         animateDots();
 
         setTimeout(() => {
-            setTimeout(() => {
                 playButton.classList.add('fade-in');
-            }, 50);
-        }, 8000);
+            }, 5000); /*fade in button*/
     }
 }
 
@@ -46,13 +43,8 @@ function animateDots(){
     setTimeout(animateDots, 500);
 }
 playButton.addEventListener('click', () => {
-    console.log("Loading...")
-
-    playButton.style.transform = "scale(0.9)";
-
-    setTimeout(() => {
+        playButton.style.transform = "scale(0.9)";
         fadeToS2();
-    }, 300);
 })
 
 function fadeToS2(){
