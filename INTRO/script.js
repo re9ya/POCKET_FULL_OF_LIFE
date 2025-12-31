@@ -1,59 +1,91 @@
-const titleText = "''WHENEVER YOU FEEL LIKE CRITICIZING ANY ONE...\nJUST REMEMBER\nTHAT ALL PEOPLE IN THIS WORLD\nHAVEN'T HAD THE ADVANTAGES THAT YOU'VE HAD''\n-THE GREAT GATSBY";
-const bigTitleText = "POCKET FULL\nOF\nLIFE";
-const titleElement = document.getElementById('typewriter');
+/* =========================================
+   THE UNIVERSAL TYPEWRITER ENGINE
+   ========================================= */
+/**
+ * @param {string} text - The string to type out
+ * @param {HTMLElement} element - The HTML element where text appears
+ * @param {number} speed - Speed in ms (default 50)
+ * @param {Function} callback - Optional function to run when finished
+ */
+function playTypewriter(text, element, speed = 50, callback = null) {
+    let index = 0;
+    element.textContent = ""; // Clear box before starting
+
+    function type() {
+        if (index < text.length) {
+            const char = text[index];
+            
+            if (char === '\n') {
+                element.appendChild(document.createElement('br'));
+            } else {
+                element.appendChild(document.createTextNode(char));
+            }
+
+            index++;
+            setTimeout(type, speed);
+        } else {
+            // Run the callback if one was provided
+            if (callback) callback();
+        }
+    }
+    type();
+}
+
+/* =========================================
+   SCENE 1 SETUP & LOGIC
+   ========================================= */
+
+// 1. Element Selectors
 const bigTitleElement = document.getElementById('bigTitle');
-const cursor = document.querySelector('.cursor');
+const quoteElement = document.getElementById('typewriter');
 const dotsElement = document.querySelector('.dots');
 const playButton = document.getElementById('playButton');
-let titleIndex = 0;
 
+// 2. Content Strings
+const bigTitleText = "POCKET FULL\nOF\nLIFE";
+const quoteText = "''WHENEVER YOU FEEL LIKE CRITICIZING ANY ONE...\nJUST REMEMBER\nTHAT ALL PEOPLE IN THIS WORLD\nHAVEN'T HAD THE ADVANTAGES THAT YOU'VE HAD''\n-THE GREAT GATSBY";
+
+// 3. Initial State
 dotsElement.style.display = 'none';
-bigTitleElement.textContent = bigTitleText; /*Fade in big title*/ */
+bigTitleElement.textContent = bigTitleText;
 
+// 4. Start the Sequence
+// Fade in the Big Title after a delay
 setTimeout(() => {
     bigTitleElement.classList.add('fade-in');
 }, 26000);
 
-function typewriter() {
-    if (titleIndex < titleText.length){
-        const char = titleText[titleIndex];
+// Start the Universal Engine for the Gatsby Quote
+playTypewriter(quoteText, quoteElement, 150, () => {
+    // CALLBACK: Everything in here happens ONLY after the typing ends
+    dotsElement.style.display = 'inline';
+    animateDots();
 
-        if (char === '\n') {
-          titleElement.insertBefore(document.createElement('br'), dotsElement);
-        } else {
-            titleElement.insertBefore(document.createTextNode(char), dotsElement);
-        }
+    // Show the button slowly
+    setTimeout(() => {
+        playButton.classList.add('fade-in');
+    }, 5000);
+});
 
-        titleIndex++;
-        setTimeout(typewriter, 150);
-    } else { 
-        dotsElement.style.display = 'inline';
-        animateDots();
-
-        setTimeout(() => {
-                playButton.classList.add('fade-in');
-            }, 5000); /*fade in button*/
-    }
-}
+/* =========================================
+   HELPER FUNCTIONS
+   ========================================= */
 
 let dotCount = 0;
-function animateDots(){
+function animateDots() {
     dotCount = (dotCount % 3) + 1;
     dotsElement.textContent = '.'.repeat(dotCount);
     setTimeout(animateDots, 500);
 }
-playButton.addEventListener('click', () => {
-        playButton.style.transform = "scale(0.9)";
-        fadeToS2();
-})
 
-function fadeToS2(){
+// Scene Transition logic
+playButton.addEventListener('click', () => {
+    playButton.style.transform = "scale(0.9)";
+    
     const fadeOverlay = document.querySelector('.fade-to-S2');
     fadeOverlay.classList.add('active');
 
-setTimeout(() => {
-    window.location.href = 's2.html';
+    setTimeout(() => {
+        window.location.href = 's2.html';
     }, 2000);
-}
-
-typewriter();
+});
