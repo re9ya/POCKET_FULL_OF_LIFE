@@ -44,6 +44,12 @@ body {
 }
 
 .cursor {
+    display: inline-block;
+    width: 10px;
+    height: 1.2em;
+    color: white;
+    margin-left: 2px;
+    vertical-align: middle;
     animation: blink 0.4s step-end infinite;
 }
 
