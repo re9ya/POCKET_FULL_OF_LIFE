@@ -1,30 +1,36 @@
-alert("S2.JS STARTING...");
-
-// DO NOT put "let" or "const" here. 
-// We are just filling the variable already made in engine.js
 currentScript = [
     {
         bg: '../Images/BG-HomeEnterance.png',
         name: "Tico",
-        text: "Hello! Welcome in!"
+        text: "Hello! Welcome in!..."
     },
     {
         bg: '../Images/BG-HomeEnterance.png',
-        name: "", 
-        text: "The house smells faintly of old paper and graphite."
+        name: "Tico", 
+        text: "Would you like a tutorial on how to play...?"
     },
     {
-        bg: '../Images/BG-HomeEnterance.png',
-        name: "Tico",
-        text: "Make yourself at home!"
+        choices: [
+            // Added comma at the end of this line 👇
+            {text: "No thanks", target: 'No_path'}, 
+            {text: "Yes, please!", target: 'Yes_path'}
+        ]
     }
 ];
 
-alert("SCRIPT DATA LOADED. TRIGGERING RENDER...");
+// IMPORTANT: We remove 'const' so 'branches' becomes a global variable.
+// This ensures engine.js can see it.
+branches = {
+    No_path: [
+        { name: "Tico", text: "Welcome Back then!" },
+        // You will need to add logic here later to change scene
+    ],
+    Yes_path: [
+        { name: "Tico", text: "Welcome to my story!" },
+        // Tutorial logic goes here
+    ]
+};
 
-// Start the engine
-if (typeof renderLine === "function") {
+window.onload = () => {
     renderLine();
-} else {
-    alert("CRITICAL ERROR: s2.js cannot find renderLine in engine.js!");
-}
+};

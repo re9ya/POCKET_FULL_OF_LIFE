@@ -26,7 +26,7 @@ body {
     position: absolute;
     bottom: 100%;
     background: rgba(255, 255, 255, 0.9);  
-    padding: 5px 25px;
+    padding: 10px 200px;
     border-radius: 5px 5px 0 0; 
     border: 2px solid white;
     border-bottom: none; 
@@ -34,10 +34,9 @@ body {
 
 #name-tag {
     display: inline-block;
-    transform: skewX(10deg); /* Un-slant the text */
     color: black;
-    font-family: 'Shadows Into Light', cursive;
-    font-weight: bold;
+    font-family:'Courier New', Courier, monospace;
+    font-size: 80px;
     text-transform: uppercase;
 }
 .dialogue-box {
@@ -58,21 +57,54 @@ body {
 }
 
 .cursor {
-    animation: blink 0.4s step-end infinite;
+    animation: blink 0.5s step-end infinite;
     color: white;
 }
 
 @keyframes blink { 50% { opacity: 0; } }
 
 #typewriter {
-    color: #ffffff !important; /* Pure white */
-    font-family: sans-serif;   /* Temporary: use a standard font to rule out font errors */
-    font-size: 24px !important; 
+    color: #f3f3f3 !important; /* Pure white */
+    font-family:'Courier New', Courier, monospace;
+    font-size: 50px !important; 
     line-height: 1.5;
     display: block !important;
     visibility: visible !important;
     opacity: 1 !important;
-    /* Remove the blue background for a second to see if white text appears */
-    background: transparent !important; 
-    border: 1px solid yellow !important; 
+}
+
+.choice-layout {
+    display: none;
+    flex-direction: column;
+    gap: 50px;
+    position: absolute;
+    bottom: 120%;
+    right: 300px;
+    transform: none; 
+    align-items: flex-end; 
+    z-index: 10000; /* Use a huge number to force it on top */
+}
+
+.choice-button {
+    background: rgba(29, 29, 29, 0.95); 
+    border: 3px solid white; 
+    color: white; 
+    padding: 15px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 2.5rem; 
+    cursor: pointer;
+    transition: 0.2s;
+    pointer-events: all; 
+    width: 500px;        
+    height: 200px;        
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.choice-button:hover {
+    background: white;
+    color: black; 
+    transform: scale(1.05);
 }

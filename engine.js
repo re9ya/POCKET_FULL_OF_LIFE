@@ -1,5 +1,3 @@
-alert("ENGINE.JS HAS LOADED!");
-
 let stepIndex = 0;
 let currentScript = [];
 
@@ -30,10 +28,33 @@ function playTypewriter(text, element, speed = 50, callback = null) {
 }
 
 function renderLine() {
-    console.log("RenderLine called for step:", stepIndex);
     const line = currentScript[stepIndex];
     const typewriterElement = document.getElementById('typewriter');
-    
+    const choiceContainer = document.getElementById('choice-container');
+
+    // Clear previous choices
+    choiceContainer.innerHTML = "";
+    choiceContainer.style.display = "none";
+
+    // IF THIS IS A CHOICE LINE
+    if (line.choices) {
+        choiceContainer.style.display = "flex";
+        line.choices.forEach(choice => {
+            const btn = document.createElement('button');
+            btn.className = "choice-button";
+            btn.innerText = choice.text;
+            
+            btn.onclick = () => {
+                // Change the currentScript to the new branch!
+                currentScript = branches[choice.target];
+                stepIndex = 0; // Reset to start of new branch
+                renderLine();
+            };
+            choiceContainer.appendChild(btn);
+        });
+        return; // Stop here so it doesn't try to type "undefined" text
+    }
+
     if (!typewriterElement) {
         alert("ERROR: Could not find element with id='typewriter'!");
         return;
@@ -52,11 +73,18 @@ function renderLine() {
         nameBox.style.display = line.name ? "block" : "none";
     }
 
-    playTypewriter(line.text, typewriterElement, 50);
+    playTypewriter(line.text, typewriterElement, 90);
 }
 
 // Click to progress
-document.addEventListener('click', () => {
+document.addEventListener('click', (e) => {
+    if (e.target.tagName === 'BUTTON') return;
+
+    const choiceContainer = document.getElementById('choice-container');
+    if (choiceContainer && choiceContainer.style.display === 'flex') {
+        return; 
+    }
+
     if (currentScript.length > 0 && stepIndex < currentScript.length - 1) {
         stepIndex++;
         renderLine();
