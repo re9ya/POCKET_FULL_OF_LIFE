@@ -41,10 +41,8 @@ const quoteElement = document.getElementById('typewriter');
 const playButton = document.getElementById('playButton');
 
 //Texts
-const bigTitleText = "POCKET FULL\nOF\nLIFE";
+const bigTitleText = "POCKET FULL OF LIFE"
 const quoteText = "''WHENEVER YOU FEEL LIKE CRITICIZING ANY ONE...\nJUST REMEMBER\nTHAT ALL PEOPLE IN THIS WORLD\nHAVEN'T HAD THE ADVANTAGES THAT YOU'VE HAD''\n-THE GREAT GATSBY";
-
-bigTitleElement.textContent = bigTitleText;
 
 //Fade in the Big Title after a delay
 setTimeout(() => {
