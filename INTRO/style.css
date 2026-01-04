@@ -5,26 +5,18 @@ body {
     background-color: black;
     margin: 0;
     padding: 0;
-}
-
-.bigTitle, .opening {
-    margin: 0;
-    padding: 0;
+    overflow: hidden;
 }
 
 .bigTitle {
-    width: 100%;
+    width: 100%; 
+    max-width: 2000px; 
     height: auto;
-    max-width: 1800px;
-    background: transparent;
-    border: none;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     transform: translateX(5%);
 
-    margin-bottom: -70px;
+    display: block;
+    margin: 0 auto; 
+    
     opacity: 0;
     transition: opacity 2s ease;
 }
@@ -34,13 +26,17 @@ body {
 }
 
 .opening {
-    color:antiquewhite;
-    font-size: 50px;
+  color: antiquewhite;
+    font-size: clamp(24px, 5vw, 40px); /* Adjusts font size based on screen width */
     font-weight: lighter;
     text-align: center;
     max-width: 80%;
-    line-height: 1.6;
-    margin-top: -600px;
+    line-height: 1.4;
+    position: relative;
+    
+    /* 4. Spacing - Use a small margin to separate it from the title */
+    margin-top: -300px; 
+    min-height: 150px; /* Reserves space so it doesn't jump when typing */
 }
 
 .cursor {
@@ -116,9 +112,9 @@ body {
     align-items: center;
     justify-content: center;
 
-    margin-top: 44px;
+    margin-top: 40px; 
     opacity: 0;
-    transition: transform 0.3s, opacity 8s ease;
+    transition: opacity 5s ease, transform 0.3s;
     pointer-events: none;
 }
 
