@@ -11,7 +11,6 @@ currentScript = [
     }
 ];
 
-// Engine Start
 window.onload = () => {
     renderLine();
 };

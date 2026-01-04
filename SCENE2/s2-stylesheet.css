@@ -1,24 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&family=Shadows+Into+Light&display=swap');
+
 body {
-    /* 1. Reset the basics */
     margin: 0;
     padding: 0;
     width: 100vw;
     height: 100vh;
-    overflow: hidden; /* Stops the player from scrolling */
-
-    /* 2. The Background Engine */
-    background-color: black; /* Fallback color */
+    overflow: hidden;
+    background-color: black;
     background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover; 
-
-    /* 3. The Smooth Transition */
-    /* This makes the room swap feel like a cross-fade rather than a glitchy jump */
+    background-size: cover;
     transition: background-image 1.2s ease-in-out;
-
-    /* 4. Layout */
     display: flex;
     flex-direction: column;
-    justify-content: flex-end; /* Pushes the dialogue box to the bottom */
+    justify-content: flex-end;
     align-items: center;
 }
+
+.game-container {
+    position: fixed;
+    bottom: 40px;
+    width: 90%;
+    max-width: 1000px;
+    z-index: 100;
+}
+
+.name-box {
+    background: #ff006e; /* Hot Pink */
+    color: white;
+    padding: 8px 40px;
+    border: 3px solid white;
+    transform: skewX(-15deg); /* The Slant */
+    margin-left: 20px;
+    margin-bottom: -5px;
+    display: inline-block;
+    position: relative;
+    z-index: 101;
+}
+
+#name-tag {
+    display: inline-block;
+    transform: skewX(15deg); /* Un-slant the text */
+    font-family: 'Gloria Hallelujah', cursive;
+    font-weight: bold;
+}
+
+.dialogue-box {
+    background: rgba(0, 0, 0, 0.85);
+    border: 4px solid white;
+    width: 100%;
+    min-height: 140px;
+    padding: 30px;
+    box-sizing: border-box;
+}
+
+.opening {
+    color: white;
+    font-family: 'Shadows Into Light', cursive;
+    font-size: 1.8rem;
+    margin: 0;
+    text-align: left; /* Overrides Intro centering */
+}
+
+.cursor {
+    animation: blink 0.4s step-end infinite;
+    color: white;
+}
+
+@keyframes blink { 50% { opacity: 0; } }
