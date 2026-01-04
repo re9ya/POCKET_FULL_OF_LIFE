@@ -1,2 +1,24 @@
 body {
+    /* 1. Reset the basics */
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden; /* Stops the player from scrolling */
+
+    /* 2. The Background Engine */
+    background-color: black; /* Fallback color */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover; 
+
+    /* 3. The Smooth Transition */
+    /* This makes the room swap feel like a cross-fade rather than a glitchy jump */
+    transition: background-image 1.2s ease-in-out;
+
+    /* 4. Layout */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* Pushes the dialogue box to the bottom */
+    align-items: center;
 }
