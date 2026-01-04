@@ -1,7 +1,11 @@
 # POCKET_FULL_OF_LIFE STORY GAME
+*NOTICE: THIS WEB GAME IS STILL A WORK IN PROGRESS*
 
 Hello and Welcome!
     This is my game, "Pocket Full of Life"
+
+About Me
+    Thank you for looking at my web game! My name is re9ya and I am a junior in highschool. I've coded for about a year and a half and wanted to further challenge myself in making this game while also being able to show some of the values and experiences I've held onto dearly and want to show to the world. This is Pocket Full of Life!
 
 Why did I call it the "Pocket Full of Life"?
     A "pocket full" usually carries a negative connotation—it feels small, insufficient, and never quite enough. This game centers on that void: the loss of confidence, the desperate search for external acceptance, and the tragedy of never truly living for oneself. Through this story, I want to show how expectations rise, time slips away, and isolation only grows thicker.
