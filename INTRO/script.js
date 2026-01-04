@@ -81,6 +81,6 @@ playButton.addEventListener('click', () => {
     fadeOverlay.classList.add('active');
 
     setTimeout(() => {
-        window.location.href = 'SCENE/s2.html';
+        window.location.href = '../SCENE/s2.html';
     }, 2000);
 });
